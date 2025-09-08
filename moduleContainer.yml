@@ -1,0 +1,2314 @@
+id: moduleContainer
+parentSlotId: '2'
+definitionId: customReactApp
+styles:
+  xl:
+    gridItem:
+      x: 0
+      y: 0
+      w: 24
+      h: 40
+properties:
+  name: moduleContainer
+  heightMode: auto
+  margin: false
+  fileSystem:
+    app/app.tsx: >
+      'use client';
+
+
+      import { useState } from 'react';
+
+      import { Card, CardHeader, CardTitle, CardContent, CardDescription } from
+      '@/components/ui/card';
+
+      import { Button } from '@/components/ui/button';
+
+      import { Input } from '@/components/ui/input';
+
+      import { Textarea } from '@/components/ui/textarea';
+
+      import { Badge } from '@/components/ui/badge';
+
+      import { Separator } from '@/components/ui/separator';
+
+      import { 
+        ArrowRight, 
+        CheckCircle, 
+        Star, 
+        Users, 
+        Zap, 
+        Target,
+        Mail,
+        Phone,
+        MapPin,
+        Briefcase,
+        TrendingUp,
+        Shield,
+        Gamepad2,
+        Brain,
+        DollarSign,
+        Calendar,
+        Globe,
+        MessageCircle,
+        Award,
+        BarChart3,
+        Smartphone,
+        Play,
+        Sparkles,
+        Lightbulb,
+        Rocket
+      } from 'lucide-react';
+
+
+      function App() {
+        const [activeSection, setActiveSection] = useState('home');
+        const [formData, setFormData] = useState({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          service: ''
+        });
+
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+          setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+          });
+        };
+
+        const handleSubmit = (e: React.FormEvent) => {
+          e.preventDefault();
+          console.log('Form submitted:', formData);
+          alert('Thank you! We\'ll send you a detailed proposal within 24 hours.');
+          setFormData({ name: '', email: '', company: '', message: '', service: '' });
+        };
+
+        const scrollToSection = (sectionId: string) => {
+          setActiveSection(sectionId);
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        };
+
+        return (
+          <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50">
+            {/* Header */}
+            <header className="fixed top-0 w-full bg-gradient-to-r from-yellow-50/95 to-amber-50/95 backdrop-blur-sm shadow-sm z-50 border-b border-yellow-200/20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center py-4">
+                  <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">Rzain</div>
+                    <div className="ml-2 text-sm text-amber-700">Growth & AI</div>
+                  </div>
+                  <nav className="hidden md:flex space-x-8">
+                    <button 
+                      onClick={() => scrollToSection('home')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'home' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Home
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('services')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'services' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Services
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('pricing')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'pricing' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Pricing
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('clients')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'clients' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Clients
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('community')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'community' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Community
+                    </button>
+                    <button 
+                      onClick={() => scrollToSection('contact')} 
+                      className={`text-sm font-medium transition-colors ${activeSection === 'contact' ? 'text-amber-600' : 'text-amber-700 hover:text-amber-600'}`}
+                    >
+                      Contact
+                    </button>
+                  </nav>
+                  <Button onClick={() => scrollToSection('pricing')} className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white shadow-lg">
+                    View Pricing
+                  </Button>
+                </div>
+              </div>
+            </header>
+
+            {/* Hero Section */}
+            <section id="home" className="pt-32 pb-20 bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 relative overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-300/20 rounded-full blur-xl"></div>
+              <div className="absolute top-40 right-20 w-32 h-32 bg-amber-300/20 rounded-full blur-xl"></div>
+              <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-orange-300/20 rounded-full blur-xl"></div>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-6 py-3 text-sm font-medium text-amber-800 mb-8 shadow-lg border border-yellow-300/50">
+                    <Sparkles className="w-4 h-4 mr-2 text-yellow-600" />
+                    10+ Years in Gaming & Apps Growth
+                  </div>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                    Fractional{' '}
+                    <span className="bg-gradient-to-r from-yellow-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+                      Head of Growth
+                    </span>
+                    <br />for Gaming & Apps
+                  </h1>
+                  <p className="text-xl md:text-2xl text-amber-800 mb-8 max-w-4xl mx-auto leading-relaxed">
+                    Scale your UA spend by 50%+ with a human-first approach. Creative strategist and AI & UA ops expert 
+                    helping 6-figure profitable gaming and app businesses reach their next growth milestone.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <Button 
+                      size="lg" 
+                      className="text-lg px-8 py-6 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => scrollToSection('pricing')}
+                    >
+                      <DollarSign className="mr-2 h-5 w-5" />
+                      View Pricing
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="lg" 
+                      className="text-lg px-8 py-6 border-2 border-amber-300 text-amber-700 hover:bg-amber-100 shadow-lg"
+                      onClick={() => scrollToSection('services')}
+                    >
+                      View Services
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </div>
+                  
+                  {/* Key Stats */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div className="text-center bg-white/70 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-yellow-200/50">
+                      <div className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent mb-1">50%+</div>
+                      <div className="text-sm text-amber-700">UA Spend Growth</div>
+                    </div>
+                    <div className="text-center bg-white/70 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-yellow-200/50">
+                      <div className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent mb-1">6-Fig</div>
+                      <div className="text-sm text-amber-700">Profitable Clients</div>
+                    </div>
+                    <div className="text-center bg-white/70 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-yellow-200/50">
+                      <div className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent mb-1">900+</div>
+                      <div className="text-sm text-amber-700">Community Members</div>
+                    </div>
+                    <div className="text-center bg-white/70 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-yellow-200/50">
+                      <div className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent mb-1">30+</div>
+                      <div className="text-sm text-amber-700">Countries</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Trusted By Section */}
+            <section className="py-16 bg-gradient-to-r from-amber-50 to-yellow-50 border-y border-yellow-200/50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="text-2xl font-bold text-amber-900 mb-12">Trusted by Leading Gaming & App Companies</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                  {/* Client logos - removed Carry1st and Tamatem as requested */}
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">PicsArt</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">AppsFlyer</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">Xsolla</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">SoloLearn</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">Chai.ai</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">Immutable</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">Lingvano</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">AppTweak</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">Pixion</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50 hover:shadow-xl transition-all duration-200">
+                    <div className="text-lg font-semibold text-amber-800">AppCharge</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Human Approach */}
+            <section className="py-20 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 relative">
+              {/* Decorative background elements */}
+              <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-yellow-200/30 to-amber-300/30 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-br from-amber-200/30 to-orange-300/30 rounded-full blur-2xl"></div>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-6">Human-First Growth Approach</h2>
+                  <p className="text-xl text-amber-800 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    Monthly engagements with transparent pricing and clear deliverables. 
+                    Professional growth consulting with measurable results and dedicated support.
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                  <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 border-yellow-200/50 bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm transform hover:scale-105">
+                    <CardHeader className="pb-4">
+                      <div className="bg-gradient-to-r from-yellow-400 to-amber-400 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <DollarSign className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl mb-2 text-amber-900">Transparent Pricing</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base text-amber-800">
+                        Clear pricing structure with defined deliverables. Monthly growth consultancy 
+                        and creative production services with predictable investment.
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br from-white/90 to-amber-50/90 backdrop-blur-sm transform hover:scale-105">
+                    <CardHeader className="pb-4">
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <Target className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl mb-2 text-amber-900">Results-Driven</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base text-amber-800">
+                        Only continue if you see real impact. We focus on cash flow improvement and 
+                        measurable growth metrics that matter to your business.
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 hover:shadow-xl transition-all duration-300 border-2 border-orange-200/50 bg-gradient-to-br from-white/90 to-orange-50/90 backdrop-blur-sm transform hover:scale-105">
+                    <CardHeader className="pb-4">
+                      <div className="bg-gradient-to-r from-orange-400 to-red-400 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <Users className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl mb-2 text-amber-900">Human Partnership</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base text-amber-800">
+                        Direct access to industry experts with 10+ years experience. Personal attention, 
+                        not automated solutions or junior consultants.
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center">
+                  <div className="inline-flex items-center bg-gradient-to-r from-white/90 to-yellow-50/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 text-amber-800 border border-yellow-200/50">
+                    <DollarSign className="h-6 w-6 text-amber-600 mr-3" />
+                    <span className="font-medium">6-Figure Profitable Businesses Only</span>
+                    <Separator orientation="vertical" className="mx-4 h-6 bg-amber-300" />
+                    <Globe className="h-6 w-6 text-amber-600 mr-3" />
+                    <span className="font-medium">30+ Countries Served</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Services Section */}
+            <section id="services" className="py-20 bg-gradient-to-br from-white to-yellow-50 relative overflow-hidden">
+              {/* Background decoration */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-200/20 to-transparent rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-amber-200/20 to-transparent rounded-full blur-3xl"></div>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-6">Fractional Services</h2>
+                  <p className="text-xl text-amber-800 max-w-3xl mx-auto mb-8 leading-relaxed">
+                    Specialized growth services for gaming and app businesses. Team management, 
+                    marketability testing, user acquisition, ASO, and ad monetization.
+                  </p>
+                  <div className="inline-flex items-center bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-8 py-4 shadow-lg border border-yellow-300/50">
+                    <Lightbulb className="w-5 h-5 text-amber-700 mr-2" />
+                    <span className="text-amber-800 font-semibold">Fractional Head of Growth • Creative Strategist • AI & UA Ops</span>
+                  </div>
+                </div>
+                
+                <div className="grid lg:grid-cols-3 gap-8">
+                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-yellow-200/50 bg-gradient-to-br from-white/95 to-yellow-50/95 backdrop-blur-sm transform hover:scale-105 hover:border-yellow-300">
+                    <CardHeader className="pb-6">
+                      <div className="bg-gradient-to-r from-yellow-400 to-amber-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
+                        <TrendingUp className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-2xl mb-3 text-amber-900">Growth Strategy</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base mb-6 text-amber-800">
+                        Scale your UA spend by 50%+ with proven strategies across Google, Meta, ad networks, 
+                        and programmatic. Focus on cash flow and sustainable growth.
+                      </CardDescription>
+                      <ul className="space-y-3">
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>User Acquisition Optimization</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Team Management & Strategy</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Marketability Testing</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Performance Analytics</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br from-white/95 to-amber-50/95 backdrop-blur-sm transform hover:scale-105 hover:border-amber-300">
+                    <CardHeader className="pb-6">
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
+                        <Brain className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-2xl mb-3 text-amber-900">Creative & AI Ops</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base mb-6 text-amber-800">
+                        Creative strategy combined with AI-powered optimization. Maximize your creative 
+                        performance with data-driven insights and automation.
+                      </CardDescription>
+                      <ul className="space-y-3">
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Creative Strategy & Testing</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>AI-Powered Optimization</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Automated UA Operations</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Performance Creative Assets</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-orange-200/50 bg-gradient-to-br from-white/95 to-orange-50/95 backdrop-blur-sm transform hover:scale-105 hover:border-orange-300">
+                    <CardHeader className="pb-6">
+                      <div className="bg-gradient-to-r from-orange-400 to-red-400 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
+                        <Gamepad2 className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-2xl mb-3 text-amber-900">Gaming & Apps Focus</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base mb-6 text-amber-800">
+                        Specialized expertise in gaming and app monetization. ASO, ad monetization, 
+                        and industry-specific growth strategies that work.
+                      </CardDescription>
+                      <ul className="space-y-3">
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>App Store Optimization (ASO)</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Ad Monetization Strategy</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Gaming-Specific UA</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span>Retention & Engagement</span>
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <div className="mt-16 text-center">
+                  <div className="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl border border-yellow-200/50 backdrop-blur-sm">
+                    <div className="flex items-center justify-center mb-4">
+                      <Award className="h-8 w-8 text-amber-600 mr-3" />
+                      <h3 className="text-2xl lg:text-3xl font-bold text-amber-900">10+ Years Experience</h3>
+                    </div>
+                    <p className="text-lg text-amber-800 mb-6 leading-relaxed">
+                      Proven track record in apps and games with a growth-focused approach. 
+                      Managed to scale UA spend and help companies improve cash flow across all major platforms.
+                    </p>
+                    <Button 
+                      size="lg" 
+                      className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white shadow-xl transform hover:scale-105 transition-all duration-200"
+                      onClick={() => scrollToSection('contact')}
+                    >
+                      <Rocket className="mr-2 h-5 w-5" />
+                      Start Your Growth Journey
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section id="pricing" className="py-20 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 relative">
+              {/* Background decoration */}
+              <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-300/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 bg-amber-300/20 rounded-full blur-2xl"></div>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-6">Transparent Pricing</h2>
+                  <p className="text-xl text-amber-800 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    Clear, upfront pricing for professional growth consulting services. 
+                    Choose the package that fits your business needs.
+                  </p>
+                </div>
+                
+                <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                  {/* Monthly Consulting Package */}
+                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-yellow-300/50 bg-gradient-to-br from-white/95 to-yellow-50/95 backdrop-blur-sm transform hover:scale-105 relative">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <Badge className="bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-4 py-2 text-sm font-semibold">
+                        Most Popular
+                      </Badge>
+                    </div>
+                    <CardHeader className="pb-6 text-center">
+                      <div className="bg-gradient-to-r from-yellow-400 to-amber-500 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <TrendingUp className="h-10 w-10 text-white" />
+                      </div>
+                      <CardTitle className="text-3xl mb-3 text-amber-900">Monthly Growth Consulting</CardTitle>
+                      <div className="text-center mb-6">
+                        <div className="text-5xl font-bold text-amber-900 mb-2">€3,500</div>
+                        <div className="text-amber-700 text-lg">per month</div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base mb-8 text-amber-800 text-center">
+                        Comprehensive growth consulting with hands-on marketing support and strategic guidance.
+                      </CardDescription>
+                      <ul className="space-y-4">
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Complete audit & review of current operations</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Hands-on marketing strategy & execution</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Channel management & optimization</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Weekly strategy meetings & progress reviews</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Dedicated Slack channel for direct communication</span>
+                        </li>
+                      </ul>
+                      <div className="mt-8 text-center">
+                        <Button 
+                          size="lg" 
+                          className="w-full bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white shadow-xl transform hover:scale-105 transition-all duration-200"
+                          onClick={() => scrollToSection('contact')}
+                        >
+                          Get Started
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Creative Production Package */}
+                  <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br from-white/95 to-amber-50/95 backdrop-blur-sm transform hover:scale-105">
+                    <CardHeader className="pb-6 text-center">
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <Sparkles className="h-10 w-10 text-white" />
+                      </div>
+                      <CardTitle className="text-3xl mb-3 text-amber-900">Creative Production</CardTitle>
+                      <div className="text-center mb-6">
+                        <div className="text-5xl font-bold text-amber-900 mb-2">€1,000</div>
+                        <div className="text-amber-700 text-lg">one-time or monthly</div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-base mb-8 text-amber-800 text-center">
+                        Professional creative assets designed to boost your user acquisition and app store performance.
+                      </CardDescription>
+                      <ul className="space-y-4">
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">6 AI-generated creatives including UGC content</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">UI design & prototypes in Figma</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">ASO screenshot production & optimization</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Performance-optimized creative assets</span>
+                        </li>
+                        <li className="flex items-start text-amber-800">
+                          <CheckCircle className="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="font-medium">Ready-to-use formats for all major platforms</span>
+                        </li>
+                      </ul>
+                      <div className="mt-8 text-center">
+                        <Button 
+                          size="lg" 
+                          variant="outline"
+                          className="w-full border-2 border-amber-300 text-amber-700 hover:bg-amber-100 shadow-lg transform hover:scale-105 transition-all duration-200"
+                          onClick={() => scrollToSection('contact')}
+                        >
+                          Order Creatives
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Additional Info */}
+                <div className="mt-16 text-center">
+                  <div className="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl border border-yellow-200/50 backdrop-blur-sm">
+                    <div className="flex items-center justify-center mb-4">
+                      <Award className="h-8 w-8 text-amber-600 mr-3" />
+                      <h3 className="text-2xl lg:text-3xl font-bold text-amber-900">Professional Growth Partnership</h3>
+                    </div>
+                    <p className="text-lg text-amber-800 mb-6 leading-relaxed">
+                      Both packages can be combined for maximum impact. Monthly consulting clients receive 20% discount on creative production services.
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 text-sm text-amber-700">
+                      <div className="flex items-center justify-center">
+                        <Calendar className="h-5 w-5 mr-2" />
+                        <span>Monthly billing available</span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <Shield className="h-5 w-5 mr-2" />
+                        <span>Cancel anytime with 30-day notice</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Client Portfolio */}
+            <section id="clients" className="py-20 bg-gradient-to-br from-amber-50 to-orange-50 relative">
+              {/* Background decoration */}
+              <div className="absolute top-20 left-20 w-32 h-32 bg-yellow-300/20 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-20 right-20 w-40 h-40 bg-amber-300/20 rounded-full blur-3xl"></div>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-amber-900 mb-6">Trusted by Industry Leaders</h2>
+                  <p className="text-xl text-amber-800 max-w-3xl mx-auto leading-relaxed">
+                    Working with leading gaming and app companies across 30+ countries, 
+                    helping them scale and achieve sustainable growth.
+                  </p>
+                </div>
+                
+                {/* Featured Client Logos - Removed Carry1st and Tamatem */}
+                <div className="mb-16">
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">PicsArt</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">AppsFlyer</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">Xsolla</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">SoloLearn</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">Lingvano</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">Chai.ai</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">Immutable</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">AppTweak</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">Pixion</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <div className="text-center font-bold text-lg text-amber-800">AppCharge</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Success Metrics */}
+                <div className="grid md:grid-cols-3 gap-8">
+                  <Card className="p-8 text-center bg-gradient-to-br from-yellow-100 to-amber-100 border-2 border-yellow-200/50 shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <CardContent className="pt-0">
+                      <div className="bg-gradient-to-r from-yellow-500 to-amber-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <TrendingUp className="h-8 w-8 text-white" />
+                      </div>
+                      <div className="text-3xl font-bold text-amber-800 mb-2">50%+</div>
+                      <div className="text-amber-700 font-semibold mb-3">UA Spend Growth</div>
+                      <p className="text-amber-800 text-sm leading-relaxed">
+                        Average user acquisition spend increase across Google, Meta, ad networks, and programmatic platforms
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 text-center bg-gradient-to-br from-amber-100 to-orange-100 border-2 border-amber-200/50 shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <CardContent className="pt-0">
+                      <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <DollarSign className="h-8 w-8 text-white" />
+                      </div>
+                      <div className="text-3xl font-bold text-amber-800 mb-2">6-Figure</div>
+                      <div className="text-amber-700 font-semibold mb-3">Profitable Clients</div>
+                      <p className="text-amber-800 text-sm leading-relaxed">
+                        Working exclusively with established, profitable gaming and app businesses ready to scale
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="p-8 text-center bg-gradient-to-br from-orange-100 to-red-100 border-2 border-orange-200/50 shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <CardContent className="pt-0">
+                      <div className="bg-gradient-to-r from-orange-500 to-red-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <BarChart3 className="h-8 w-8 text-white" />
+                      </div>
+                      <div className="text-3xl font-bold text-amber-800 mb-2">Cash Flow</div>
+                      <div className="text-amber-700 font-semibold mb-3">Improvement</div>
+                      <p className="text-amber-800 text-sm leading-relaxed">
+                        Focus on sustainable growth strategies that directly improve your bottom line and cash position
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </section>
+
+            {/* Rzain Society Community */}
+            <section id="community" className="py-20 bg-gradient-to-br from-purple-900 to-blue-900 text-white">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold mb-6">Rzain Society</h2>
+                  <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
+                    A game-changer community of 900+ leaders in gaming across 30+ countries. 
+                    Join our exclusive network and events.
+                  </p>
+                  <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+                    <span className="text-white font-semibold">"Not your Princess, just my own hero"</span>
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-8 mb-12">
+                  <Card className="bg-white/10 backdrop-blur-sm border-white/20 p-8 hover:bg-white/20 transition-colors">
+                    <CardContent className="pt-0 text-center">
+                      <Users className="h-12 w-12 text-purple-300 mx-auto mb-4" />
+                      <div className="text-3xl font-bold text-white mb-2">900+</div>
+                      <div className="text-purple-200 font-semibold mb-3">Community Members</div>
+                      <p className="text-purple-100 text-sm">
+                        Gaming industry leaders, founders, and growth experts from around the world
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-white/10 backdrop-blur-sm border-white/20 p-8 hover:bg-white/20 transition-colors">
+                    <CardContent className="pt-0 text-center">
+                      <Globe className="h-12 w-12 text-blue-300 mx-auto mb-4" />
+                      <div className="text-3xl font-bold text-white mb-2">30+</div>
+                      <div className="text-blue-200 font-semibold mb-3">Countries</div>
+                      <p className="text-blue-100 text-sm">
+                        Global network spanning across Europe, Asia, Americas, and beyond
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-white/10 backdrop-blur-sm border-white/20 p-8 hover:bg-white/20 transition-colors">
+                    <CardContent className="pt-0 text-center">
+                      <Calendar className="h-12 w-12 text-green-300 mx-auto mb-4" />
+                      <div className="text-3xl font-bold text-white mb-2">250</div>
+                      <div className="text-green-200 font-semibold mb-3">Event Attendees</div>
+                      <p className="text-green-100 text-sm">
+                        From London to Istanbul, Barcelona - connecting the gaming community
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-white mb-6">Join Our Knowledge Base</h3>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <Button 
+                      size="lg" 
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                      onClick={() => window.open('https://whatsapp.com/channel/0029VaQkRjR1t90UFk4QRy03', '_blank')}
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      Join WhatsApp Channel
+                    </Button>
+                    <div className="text-purple-200">
+                      Access exclusive insights, strategies, and community discussions
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
+
+            {/* Contact Section */}
+            <section id="contact" className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-bold text-amber-900 mb-6">Get Started Today</h2>
+                  <p className="text-xl text-amber-800 max-w-3xl mx-auto mb-8">
+                    Ready to scale your gaming or app business? Let's discuss your needs and create a 
+                    customized growth strategy that delivers measurable results.
+                  </p>
+                  <div className="inline-flex items-center bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-6 py-3 mb-8 border border-yellow-300/50">
+                    <DollarSign className="w-5 h-5 text-amber-700 mr-2" />
+                    <span className="text-amber-800 font-semibold">Transparent Pricing • Professional Service • Proven Results</span>
+                  </div>
+                </div>
+                
+                <div className="grid lg:grid-cols-2 gap-12">
+                  <div>
+                    <Card className="p-8 shadow-xl bg-gradient-to-br from-white/95 to-yellow-50/95 backdrop-blur-sm border border-yellow-200/50">
+                      <CardHeader className="px-0 pt-0">
+                        <CardTitle className="text-2xl mb-2 text-amber-900">Start Your Growth Journey</CardTitle>
+                        <CardDescription className="text-base mb-6 text-amber-800">
+                          Tell us about your gaming or app business, and we'll create a customized proposal for your growth needs.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-0 pb-0">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                          <div className="grid gap-2">
+                            <label className="text-sm font-medium text-amber-800">Full Name</label>
+                            <Input
+                              name="name"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              placeholder="Your full name"
+                              required
+                            />
+                          </div>
+                          <div className="grid gap-2">
+                            <label className="text-sm font-medium text-amber-800">Business Email</label>
+                            <Input
+                              name="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              placeholder="your.email@company.com"
+                              required
+                            />
+                          </div>
+                          <div className="grid gap-2">
+                            <label className="text-sm font-medium text-amber-800">Company/Game Name</label>
+                            <Input
+                              name="company"
+                              value={formData.company}
+                              onChange={handleInputChange}
+                              placeholder="Your company or game name"
+                              required
+                            />
+                          </div>
+                          <div className="grid gap-2">
+                            <label className="text-sm font-medium text-amber-800">Service Interest</label>
+                            <select 
+                              name="service" 
+                              value={formData.service}
+                              onChange={handleInputChange}
+                              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                              required
+                            >
+                              <option value="">Select your interest</option>
+                              <option value="monthly-consulting">Monthly Growth Consulting (€3,500/month)</option>
+                              <option value="creative-production">Creative Production (€1,000)</option>
+                              <option value="both-services">Both Services (Combined)</option>
+                              <option value="custom-needs">Custom Requirements</option>
+                            </select>
+                          </div>
+                          <div className="grid gap-2">
+                            <label className="text-sm font-medium text-amber-800">Project Details</label>
+                            <Textarea
+                              name="message"
+                              value={formData.message}
+                              onChange={handleInputChange}
+                              placeholder="Tell us about your current UA spend, growth challenges, and your specific needs for our services..."
+                              className="min-h-[120px]"
+                              required
+                            />
+                          </div>
+                          <Button 
+                            type="submit" 
+                            size="lg" 
+                            className="w-full bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-white"
+                          >
+                            Request Consultation
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Button>
+                        </form>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  
+                  <div className="space-y-8">
+                    <Card className="p-6 bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200/50 shadow-lg">
+                      <CardContent className="pt-0">
+                        <div className="flex items-start">
+                          <div className="bg-gradient-to-r from-yellow-400 to-amber-400 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <DollarSign className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg mb-2 text-amber-900">Monthly Consulting</h3>
+                            <p className="text-amber-800 mb-3">€3,500/month comprehensive service</p>
+                            <ul className="text-sm text-amber-700 space-y-1">
+                              <li>• Complete audit & strategy review</li>
+                              <li>• Hands-on marketing execution</li>
+                              <li>• Weekly meetings & Slack support</li>
+                              <li>• Channel management & optimization</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="p-6 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200/50 shadow-lg">
+                      <CardContent className="pt-0">
+                        <div className="flex items-start">
+                          <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <Sparkles className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg mb-2 text-amber-900">Creative Production</h3>
+                            <p className="text-amber-800 mb-3">€1,000 professional creative package</p>
+                            <ul className="text-sm text-amber-700 space-y-1">
+                              <li>• 6 AI creatives including UGC</li>
+                              <li>• UI Figma production</li>
+                              <li>• ASO screenshot optimization</li>
+                              <li>• Ready-to-use formats</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="p-6 bg-gradient-to-br from-orange-50 to-red-50 border-2 border-orange-200/50 shadow-lg">
+                      <CardContent className="pt-0">
+                        <div className="flex items-start">
+                          <div className="bg-gradient-to-r from-orange-400 to-red-400 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <Award className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-lg mb-2 text-amber-900">6-Figure Business Focus</h3>
+                            <p className="text-amber-800 mb-3">For established profitable companies</p>
+                            <ul className="text-sm text-amber-700 space-y-1">
+                              <li>• Current UA spend of $10K+/month</li>
+                              <li>• Proven product-market fit</li>
+                              <li>• Ready to scale operations</li>
+                              <li>• Cash flow positive business</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="bg-gray-900 text-white py-12">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid md:grid-cols-4 gap-8">
+                  <div>
+                    <div className="flex items-center mb-4">
+                      <div className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">Rzain</div>
+                      <div className="ml-2 text-lg text-gray-300">Growth & AI</div>
+                    </div>
+                    <p className="text-gray-400 mb-4">
+                      Fractional Head of Growth for gaming and app businesses. Transparent pricing, 
+                      professional service, proven results.
+                    </p>
+                    <div className="flex items-center text-sm text-gray-400 mb-2">
+                      <Gamepad2 className="w-4 h-4 mr-2" />
+                      10+ Years Gaming & Apps
+                    </div>
+                    <div className="flex items-center text-sm text-gray-400">
+                      <Globe className="w-4 h-4 mr-2" />
+                      900+ Community Members
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-4">Services</h3>
+                    <ul className="space-y-2 text-gray-400">
+                      <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors text-left">Growth Strategy</button></li>
+                      <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors text-left">Creative & AI Ops</button></li>
+                      <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors text-left">ASO & Monetization</button></li>
+                      <li><button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors text-left">Pricing</button></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-4">Pricing</h3>
+                    <ul className="space-y-2 text-gray-400">
+                      <li><button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors text-left">Monthly Consulting - €3,500</button></li>
+                      <li><button onClick={() => scrollToSection('pricing')} className="hover:text-white transition-colors text-left">Creative Production - €1,000</button></li>
+                      <li><button onClick={() => scrollToSection('clients')} className="hover:text-white transition-colors text-left">Success Stories</button></li>
+                      <li><button onClick={() => scrollToSection('community')} className="hover:text-white transition-colors text-left">Rzain Society</button></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-4">Connect</h3>
+                    <ul className="space-y-2 text-gray-400">
+                      <li>Fractional Head of Growth</li>
+                      <li>Creative Strategist</li>
+                      <li>AI & UA Operations Expert</li>
+                      <li className="pt-2">
+                        <Button 
+                          size="sm" 
+                          className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600"
+                          onClick={() => scrollToSection('contact')}
+                        >
+                          Get Quote
+                        </Button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Separator className="my-8 bg-gray-800" />
+                <div className="flex flex-col md:flex-row justify-between items-center">
+                  <p className="text-gray-400">© 2024 Rzain Growth & AI. Professional growth consulting.</p>
+                  <div className="flex space-x-6 mt-4 md:mt-0 items-center">
+                    <span className="text-gray-500 text-sm">"Not your Princess, just my own hero"</span>
+                    <button onClick={() => scrollToSection('pricing')} className="text-yellow-400 hover:text-yellow-300 transition-colors text-sm">View Pricing</button>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        );
+      }
+
+
+      export default App;
+    components/ui/button.tsx: |+
+      import * as React from "react"
+      import { Slot } from "@radix-ui/react-slot"
+      import { cva, type VariantProps } from "class-variance-authority"
+
+      import { cn } from "@/lib/utils"
+
+      const buttonVariants = cva(
+        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+        {
+          variants: {
+            variant: {
+              default:
+                "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+              destructive:
+                "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+              outline:
+                "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+              secondary:
+                "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+              ghost: "hover:bg-accent hover:text-accent-foreground",
+              link: "text-primary underline-offset-4 hover:underline",
+            },
+            size: {
+              default: "h-9 px-4 py-2",
+              sm: "h-8 rounded-md px-3 text-xs",
+              lg: "h-10 rounded-md px-8",
+              icon: "h-9 w-9",
+            },
+          },
+          defaultVariants: {
+            variant: "default",
+            size: "default",
+          },
+        }
+      )
+
+      export interface ButtonProps
+        extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+          VariantProps<typeof buttonVariants> {
+        asChild?: boolean
+      }
+
+      const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+        ({ className, variant, size, asChild = false, ...props }, ref) => {
+          const Comp = asChild ? Slot : "button"
+          return (
+            <Comp
+              className={cn(buttonVariants({ variant, size, className }))}
+              ref={ref}
+              {...props}
+            />
+          )
+        }
+      )
+      Button.displayName = "Button"
+
+      export { Button, buttonVariants }
+
+    components/ui/card.tsx: >+
+      import * as React from "react"
+
+
+      import { cn } from "@/lib/utils"
+
+
+      const Card = React.forwardRef<
+        HTMLDivElement,
+        React.HTMLAttributes<HTMLDivElement>
+      >(({ className, ...props }, ref) => (
+        <div
+          ref={ref}
+          className={cn(
+            "rounded-lg border bg-card text-card-foreground shadow-sm",
+            className,
+          )}
+          {...props}
+        />
+      ))
+
+      Card.displayName = "Card"
+
+
+      const CardHeader = React.forwardRef<
+        HTMLDivElement,
+        React.HTMLAttributes<HTMLDivElement>
+      >(({ className, ...props }, ref) => (
+        <div
+          ref={ref}
+          className={cn("flex flex-col space-y-1.5 p-6", className)}
+          {...props}
+        />
+      ))
+
+      CardHeader.displayName = "CardHeader"
+
+
+      const CardTitle = React.forwardRef<
+        HTMLParagraphElement,
+        React.HTMLAttributes<HTMLHeadingElement>
+      >(({ className, ...props }, ref) => (
+        <h3
+          ref={ref}
+          className={cn(
+            "text-2xl font-semibold leading-none tracking-tight",
+            className,
+          )}
+          {...props}
+        />
+      ))
+
+      CardTitle.displayName = "CardTitle"
+
+
+      const CardDescription = React.forwardRef<
+        HTMLParagraphElement,
+        React.HTMLAttributes<HTMLParagraphElement>
+      >(({ className, ...props }, ref) => (
+        <p
+          ref={ref}
+          className={cn("text-sm text-muted-foreground", className)}
+          {...props}
+        />
+      ))
+
+      CardDescription.displayName = "CardDescription"
+
+
+      const CardContent = React.forwardRef<
+        HTMLDivElement,
+        React.HTMLAttributes<HTMLDivElement>
+      >(({ className, ...props }, ref) => (
+        <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+      ))
+
+      CardContent.displayName = "CardContent"
+
+
+      const CardFooter = React.forwardRef<
+        HTMLDivElement,
+        React.HTMLAttributes<HTMLDivElement>
+      >(({ className, ...props }, ref) => (
+        <div
+          ref={ref}
+          className={cn("flex items-center p-6 pt-0", className)}
+          {...props}
+        />
+      ))
+
+      CardFooter.displayName = "CardFooter"
+
+
+      export { Card, CardHeader, CardFooter, CardTitle, CardDescription,
+      CardContent }
+
+    lib/utils.ts: |
+      import { clsx, type ClassValue } from 'clsx';
+      import { twMerge } from 'tailwind-merge';
+
+      export function cn(...inputs: ClassValue[]) {
+        return twMerge(clsx(inputs));
+      }
+    package.json: |+
+      {
+        "name": "uib-module",
+        "packageManager": "bun",
+        "private": true,
+        "version": "0.0.0",
+        "type": "module",
+        "scripts": {
+          "lint": "eslint ."
+        },
+        "dependencies": {
+          "@radix-ui/react-avatar": "^1.1.10",
+          "@radix-ui/react-icons": "1.3.0",
+          "@radix-ui/react-separator": "^1.1.7",
+          "@radix-ui/react-slot": "^1.2.3",
+          "@uibakery/data": "0.0.7",
+          "canvas-confetti": "1.9.3",
+          "class-variance-authority": "0.7.0",
+          "clsx": "2.1.1",
+          "lucide-react": "0.446.0",
+          "react": "18.3.1",
+          "react-day-picker": "^9.7.0",
+          "react-dom": "18.3.1",
+          "react-icons": "~5.5.0",
+          "tailwind-merge": "2.5.2"
+        },
+        "devDependencies": {
+          "@eslint/js": "9.11.1",
+          "@types/node": "22.7.3",
+          "@types/react": "18.3.9",
+          "@types/react-dom": "18.3.0",
+          "autoprefixer": "10.4.20",
+          "eslint": "9.11.1",
+          "eslint-plugin-react-hooks": "5.1.0-rc.0",
+          "eslint-plugin-react-refresh": "0.4.12",
+          "globals": "15.9.0",
+          "postcss": "8.4.47",
+          "tailwindcss": "3.4.13",
+          "typescript": "5.5.3",
+          "typescript-eslint": "8.7.0"
+        }
+      }
+
+    components/ui/input.tsx: >+
+      import * as React from "react"
+
+
+      import { cn } from "@/lib/utils"
+
+
+      const Input = React.forwardRef<HTMLInputElement,
+      React.ComponentProps<"input">>(
+        ({ className, type, ...props }, ref) => {
+          return (
+            <input
+              type={type}
+              className={cn(
+                "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+                className
+              )}
+              ref={ref}
+              {...props}
+            />
+          )
+        }
+      )
+
+      Input.displayName = "Input"
+
+
+      export { Input }
+
+    components/ui/textarea.tsx: |+
+      import * as React from "react"
+
+      import { cn } from "@/lib/utils"
+
+      const Textarea = React.forwardRef<
+        HTMLTextAreaElement,
+        React.ComponentProps<"textarea">
+      >(({ className, ...props }, ref) => {
+        return (
+          <textarea
+            className={cn(
+              "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+              className
+            )}
+            ref={ref}
+            {...props}
+          />
+        )
+      })
+      Textarea.displayName = "Textarea"
+
+      export { Textarea }
+
+    components/ui/separator.tsx: |+
+      import * as React from "react"
+      import * as SeparatorPrimitive from "@radix-ui/react-separator"
+
+      import { cn } from "@/lib/utils"
+
+      const Separator = React.forwardRef<
+        React.ElementRef<typeof SeparatorPrimitive.Root>,
+        React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+      >(
+        (
+          { className, orientation = "horizontal", decorative = true, ...props },
+          ref
+        ) => (
+          <SeparatorPrimitive.Root
+            ref={ref}
+            decorative={decorative}
+            orientation={orientation}
+            className={cn(
+              "shrink-0 bg-border",
+              orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+              className
+            )}
+            {...props}
+          />
+        )
+      )
+      Separator.displayName = SeparatorPrimitive.Root.displayName
+
+      export { Separator }
+
+    components/ui/badge.tsx: |+
+      import * as React from "react"
+      import { cva, type VariantProps } from "class-variance-authority"
+
+      import { cn } from "@/lib/utils"
+
+      const badgeVariants = cva(
+        "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        {
+          variants: {
+            variant: {
+              default:
+                "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+              secondary:
+                "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+              destructive:
+                "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+              outline: "text-foreground",
+            },
+          },
+          defaultVariants: {
+            variant: "default",
+          },
+        }
+      )
+
+      export interface BadgeProps
+        extends React.HTMLAttributes<HTMLDivElement>,
+          VariantProps<typeof badgeVariants> {}
+
+      function Badge({ className, variant, ...props }: BadgeProps) {
+        return (
+          <div className={cn(badgeVariants({ variant }), className)} {...props} />
+        )
+      }
+
+      export { Badge, badgeVariants }
+
+    components/ui/avatar.tsx: |+
+      "use client"
+
+      import * as React from "react"
+      import * as AvatarPrimitive from "@radix-ui/react-avatar"
+
+      import { cn } from "@/lib/utils"
+
+      const Avatar = React.forwardRef<
+        React.ElementRef<typeof AvatarPrimitive.Root>,
+        React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+      >(({ className, ...props }, ref) => (
+        <AvatarPrimitive.Root
+          ref={ref}
+          className={cn(
+            "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+            className
+          )}
+          {...props}
+        />
+      ))
+      Avatar.displayName = AvatarPrimitive.Root.displayName
+
+      const AvatarImage = React.forwardRef<
+        React.ElementRef<typeof AvatarPrimitive.Image>,
+        React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+      >(({ className, ...props }, ref) => (
+        <AvatarPrimitive.Image
+          ref={ref}
+          className={cn("aspect-square h-full w-full", className)}
+          {...props}
+        />
+      ))
+      AvatarImage.displayName = AvatarPrimitive.Image.displayName
+
+      const AvatarFallback = React.forwardRef<
+        React.ElementRef<typeof AvatarPrimitive.Fallback>,
+        React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+      >(({ className, ...props }, ref) => (
+        <AvatarPrimitive.Fallback
+          ref={ref}
+          className={cn(
+            "flex h-full w-full items-center justify-center rounded-full bg-muted",
+            className
+          )}
+          {...props}
+        />
+      ))
+      AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+
+      export { Avatar, AvatarImage, AvatarFallback }
+
+  data: '{{ module.data }}'
+  __UIBAKERY__RESPONSIVE__SHOW__CONDITION__CODE__:
+    - xl
+    - xs
+  fileSystemCompiled: >
+    <script src="assets/tailwind.js"></script>
+
+    <link rel="stylesheet" href="assets/tailwind.css" />
+
+    <style></style>
+
+
+    <div class="root"></div>
+
+
+    <script>
+     window['UIB_MODULES_TO_LOAD_UIB_PROD_BUILD_COMPONENT_ID_MOCK.id']=["react", "react-dom", "react-dom/client", "react/jsx-dev-runtime", "react-hook-form", "lucide-react", "@radix-ui/react-slot", "class-variance-authority", "@radix-ui/react-separator", "clsx", "tailwind-merge"];
+    </script>
+
+    <script id="UIB_script_UIB_PROD_BUILD_COMPONENT_ID_MOCK.id.js">(()=>{var
+    Z=Object.create;var A=Object.defineProperty;var
+    Q=Object.getOwnPropertyDescriptor;var X=Object.getOwnPropertyNames;var
+    ee=Object.getPrototypeOf,te=Object.prototype.hasOwnProperty;var c=(t=>typeof
+    require<"u"?require:typeof Proxy<"u"?new Proxy(t,{get:(a,r)=>(typeof
+    require<"u"?require:a)[r]}):t)(function(t){if(typeof require<"u")return
+    require.apply(this,arguments);throw Error('Dynamic require of "'+t+'" is not
+    supported')});var f=(t,a)=>()=>(t&&(a=t(t=0)),a);var ae=(t,a)=>{for(var r in
+    a)A(t,r,{get:a[r],enumerable:!0})},D=(t,a,r,d)=>{if(a&&typeof
+    a=="object"||typeof a=="function")for(let m of
+    X(a))!te.call(t,m)&&m!==r&&A(t,m,{get:()=>a[m],enumerable:!(d=Q(a,m))||d.enumerable});return
+    t};var
+    N=(t,a,r)=>(r=t!=null?Z(ee(t)):{},D(a||!t||!t.__esModule?A(r,"default",{value:t,enumerable:!0}):r,t)),re=t=>D(A({},"__esModule",{value:!0}),t);var
+    b,h,i=f(()=>{b=window.UB_CUSTOM_REACT_APP_BUS["UIB_PROD_BUILD_COMPONENT_ID_MOCK.id"].bus,h=b.customConsole});function
+    n(...t){return(0,z.twMerge)((0,I.clsx)(t))}var
+    I,z,y=f(()=>{i();I=c("clsx"),z=c("tailwind-merge")});var
+    x,o,p,u,g,l,se,U=f(()=>{i();x=N(c("react"));y();o=x.forwardRef(({className:t,...a},r)=>x.createElement("div",{ref:r,className:n("rounded-lg
+    border bg-card text-card-foreground
+    shadow-sm",t),...a}));o.displayName="Card";p=x.forwardRef(({className:t,...a},r)=>x.createElement("div",{ref:r,className:n("flex
+    flex-col space-y-1.5
+    p-6",t),...a}));p.displayName="CardHeader";u=x.forwardRef(({className:t,...a},r)=>x.createElement("h3",{ref:r,className:n("text-2xl
+    font-semibold leading-none
+    tracking-tight",t),...a}));u.displayName="CardTitle";g=x.forwardRef(({className:t,...a},r)=>x.createElement("p",{ref:r,className:n("text-sm
+    text-muted-foreground",t),...a}));g.displayName="CardDescription";l=x.forwardRef(({className:t,...a},r)=>x.createElement("div",{ref:r,className:n("p-6
+    pt-0",t),...a}));l.displayName="CardContent";se=x.forwardRef(({className:t,...a},r)=>x.createElement("div",{ref:r,className:n("flex
+    items-center p-6 pt-0",t),...a}));se.displayName="CardFooter"});var
+    T,G,O,oe,v,_=f(()=>{i();T=N(c("react")),G=c("@radix-ui/react-slot"),O=c("class-variance-authority");y();oe=(0,O.cva)("inline-flex
+    items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm
+    font-medium transition-colors focus-visible:outline-none
+    focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none
+    disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4
+    [&_svg]:shrink-0",{variants:{variant:{default:"bg-primary
+    text-primary-foreground shadow
+    hover:bg-primary/90",destructive:"bg-destructive text-destructive-foreground
+    shadow-sm hover:bg-destructive/90",outline:"border border-input
+    bg-background shadow-sm hover:bg-accent
+    hover:text-accent-foreground",secondary:"bg-secondary
+    text-secondary-foreground shadow-sm
+    hover:bg-secondary/80",ghost:"hover:bg-accent
+    hover:text-accent-foreground",link:"text-primary underline-offset-4
+    hover:underline"},size:{default:"h-9 px-4 py-2",sm:"h-8 rounded-md px-3
+    text-xs",lg:"h-10 rounded-md px-8",icon:"h-9
+    w-9"}},defaultVariants:{variant:"default",size:"default"}}),v=T.forwardRef(({className:t,variant:a,size:r,asChild:d=!1,...m},k)=>T.createElement(d?G.Slot:"button",{className:n(oe({variant:a,size:r,className:t})),ref:k,...m}));v.displayName="Button"});var
+    R,C,j=f(()=>{i();R=N(c("react"));y();C=R.forwardRef(({className:t,type:a,...r},d)=>R.createElement("input",{type:a,className:n("flex
+    h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base
+    shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm
+    file:font-medium file:text-foreground placeholder:text-muted-foreground
+    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
+    disabled:cursor-not-allowed disabled:opacity-50
+    md:text-sm",t),ref:d,...r}));C.displayName="Input"});var
+    S,H,F=f(()=>{i();S=N(c("react"));y();H=S.forwardRef(({className:t,...a},r)=>S.createElement("textarea",{className:n("flex
+    min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2
+    text-base shadow-sm placeholder:text-muted-foreground
+    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
+    disabled:cursor-not-allowed disabled:opacity-50
+    md:text-sm",t),ref:r,...a}));H.displayName="Textarea"});function
+    W({className:t,variant:a,...r}){return
+    V.createElement("div",{className:n(le({variant:a}),t),...r})}var
+    V,q,le,Y=f(()=>{i();V=N(c("react")),q=c("class-variance-authority");y();le=(0,q.cva)("inline-flex
+    items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold
+    transition-colors focus:outline-none focus:ring-2 focus:ring-ring
+    focus:ring-offset-2",{variants:{variant:{default:"border-transparent
+    bg-primary text-primary-foreground shadow
+    hover:bg-primary/80",secondary:"border-transparent bg-secondary
+    text-secondary-foreground
+    hover:bg-secondary/80",destructive:"border-transparent bg-destructive
+    text-destructive-foreground shadow
+    hover:bg-destructive/80",outline:"text-foreground"}},defaultVariants:{variant:"default"}})});var
+    P,B,M,$=f(()=>{i();P=N(c("react")),B=N(c("@radix-ui/react-separator"));y();M=P.forwardRef(({className:t,orientation:a="horizontal",decorative:r=!0,...d},m)=>P.createElement(B.Root,{ref:m,decorative:r,orientation:a,className:n("shrink-0
+    bg-border",a==="horizontal"?"h-[1px] w-full":"h-full
+    w-[1px]",t),...d}));M.displayName=B.Root.displayName});var
+    J={};ae(J,{default:()=>me});function
+    ie(){let[t,a]=(0,L.useState)("home"),[r,d]=(0,L.useState)({name:"",email:"",company:"",message:"",service:""}),m=w=>{d({...r,[w.target.name]:w.target.value})},k=w=>{w.preventDefault(),h.log("Form
+    submitted:",r),alert("Thank you! We'll send you a detailed proposal within
+    24
+    hours."),d({name:"",email:"",company:"",message:"",service:""})},s=w=>{a(w);let
+    E=document.getElementById(w);E&&E.scrollIntoView({behavior:"smooth"})};return
+    React.createElement("div",{className:"min-h-screen bg-gradient-to-br
+    from-yellow-50 via-amber-50
+    to-orange-50"},React.createElement("header",{className:"fixed top-0 w-full
+    bg-gradient-to-r from-yellow-50/95 to-amber-50/95 backdrop-blur-sm shadow-sm
+    z-50 border-b
+    border-yellow-200/20"},React.createElement("div",{className:"max-w-7xl
+    mx-auto px-4 sm:px-6 lg:px-8"},React.createElement("div",{className:"flex
+    justify-between items-center
+    py-4"},React.createElement("div",{className:"flex items-center
+    cursor-pointer",onClick:()=>s("home")},React.createElement("div",{className:"text-2xl
+    font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text
+    text-transparent"},"Rzain"),React.createElement("div",{className:"ml-2
+    text-sm text-amber-700"},"Growth &
+    AI")),React.createElement("nav",{className:"hidden md:flex
+    space-x-8"},React.createElement("button",{onClick:()=>s("home"),className:`text-sm
+    font-medium transition-colors ${t==="home"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Home"),React.createElement("button",{onClick:()=>s("services"),className:`text-sm
+    font-medium transition-colors
+    ${t==="services"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Services"),React.createElement("button",{onClick:()=>s("pricing"),className:`text-sm
+    font-medium transition-colors
+    ${t==="pricing"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Pricing"),React.createElement("button",{onClick:()=>s("clients"),className:`text-sm
+    font-medium transition-colors
+    ${t==="clients"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Clients"),React.createElement("button",{onClick:()=>s("community"),className:`text-sm
+    font-medium transition-colors
+    ${t==="community"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Community"),React.createElement("button",{onClick:()=>s("contact"),className:`text-sm
+    font-medium transition-colors
+    ${t==="contact"?"text-amber-600":"text-amber-700
+    hover:text-amber-600"}`},"Contact")),React.createElement(v,{onClick:()=>s("pricing"),className:"bg-gradient-to-r
+    from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600
+    text-white shadow-lg"},"View
+    Pricing")))),React.createElement("section",{id:"home",className:"pt-32 pb-20
+    bg-gradient-to-br from-yellow-100 via-amber-50 to-orange-100 relative
+    overflow-hidden"},React.createElement("div",{className:"absolute top-20
+    left-10 w-20 h-20 bg-yellow-300/20 rounded-full
+    blur-xl"}),React.createElement("div",{className:"absolute top-40 right-20
+    w-32 h-32 bg-amber-300/20 rounded-full
+    blur-xl"}),React.createElement("div",{className:"absolute bottom-20 left-1/4
+    w-24 h-24 bg-orange-300/20 rounded-full
+    blur-xl"}),React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8 relative"},React.createElement("div",{className:"text-center
+    mb-12"},React.createElement("div",{className:"inline-flex items-center
+    bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-6 py-3 text-sm
+    font-medium text-amber-800 mb-8 shadow-lg border
+    border-yellow-300/50"},React.createElement(e.Sparkles,{className:"w-4 h-4
+    mr-2 text-yellow-600"}),"10+ Years in Gaming & Apps
+    Growth"),React.createElement("h1",{className:"text-4xl md:text-6xl
+    lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"},"Fractional","
+    ",React.createElement("span",{className:"bg-gradient-to-r from-yellow-600
+    via-amber-500 to-orange-500 bg-clip-text text-transparent"},"Head of
+    Growth"),React.createElement("br",null),"for Gaming &
+    Apps"),React.createElement("p",{className:"text-xl md:text-2xl
+    text-amber-800 mb-8 max-w-4xl mx-auto leading-relaxed"},"Scale your UA spend
+    by 50%+ with a human-first approach. Creative strategist and AI & UA ops
+    expert helping 6-figure profitable gaming and app businesses reach their
+    next growth milestone."),React.createElement("div",{className:"flex flex-col
+    sm:flex-row gap-4 justify-center
+    mb-12"},React.createElement(v,{size:"lg",className:"text-lg px-8 py-6
+    bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600
+    hover:to-amber-600 text-white shadow-xl transform hover:scale-105
+    transition-all
+    duration-200",onClick:()=>s("pricing")},React.createElement(e.DollarSign,{className:"mr-2
+    h-5 w-5"}),"View
+    Pricing"),React.createElement(v,{variant:"outline",size:"lg",className:"text-lg
+    px-8 py-6 border-2 border-amber-300 text-amber-700 hover:bg-amber-100
+    shadow-lg",onClick:()=>s("services")},"View
+    Services",React.createElement(e.ArrowRight,{className:"ml-2 h-5
+    w-5"}))),React.createElement("div",{className:"grid grid-cols-2
+    md:grid-cols-4 gap-6 max-w-4xl
+    mx-auto"},React.createElement("div",{className:"text-center bg-white/70
+    backdrop-blur-sm rounded-xl p-4 shadow-lg border
+    border-yellow-200/50"},React.createElement("div",{className:"text-3xl
+    font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text
+    text-transparent
+    mb-1"},"50%+"),React.createElement("div",{className:"text-sm
+    text-amber-700"},"UA Spend
+    Growth")),React.createElement("div",{className:"text-center bg-white/70
+    backdrop-blur-sm rounded-xl p-4 shadow-lg border
+    border-yellow-200/50"},React.createElement("div",{className:"text-3xl
+    font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text
+    text-transparent
+    mb-1"},"6-Fig"),React.createElement("div",{className:"text-sm
+    text-amber-700"},"Profitable
+    Clients")),React.createElement("div",{className:"text-center bg-white/70
+    backdrop-blur-sm rounded-xl p-4 shadow-lg border
+    border-yellow-200/50"},React.createElement("div",{className:"text-3xl
+    font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text
+    text-transparent
+    mb-1"},"900+"),React.createElement("div",{className:"text-sm
+    text-amber-700"},"Community
+    Members")),React.createElement("div",{className:"text-center bg-white/70
+    backdrop-blur-sm rounded-xl p-4 shadow-lg border
+    border-yellow-200/50"},React.createElement("div",{className:"text-3xl
+    font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text
+    text-transparent mb-1"},"30+"),React.createElement("div",{className:"text-sm
+    text-amber-700"},"Countries")))))),React.createElement("section",{className:"py-16
+    bg-gradient-to-r from-amber-50 to-yellow-50 border-y
+    border-yellow-200/50"},React.createElement("div",{className:"max-w-7xl
+    mx-auto px-4 sm:px-6 lg:px-8
+    text-center"},React.createElement("h2",{className:"text-2xl font-bold
+    text-amber-900 mb-12"},"Trusted by Leading Gaming & App
+    Companies"),React.createElement("div",{className:"grid grid-cols-2
+    md:grid-cols-4 lg:grid-cols-5 gap-8
+    items-center"},React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"PicsArt")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"AppsFlyer")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"Xsolla")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"SoloLearn")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"Chai.ai")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"Immutable")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"Lingvano")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"AppTweak")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"Pixion")),React.createElement("div",{className:"bg-white/80
+    backdrop-blur-sm rounded-xl p-6 shadow-lg border border-amber-200/50
+    hover:shadow-xl transition-all
+    duration-200"},React.createElement("div",{className:"text-lg font-semibold
+    text-amber-800"},"AppCharge"))))),React.createElement("section",{className:"py-20
+    bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50
+    relative"},React.createElement("div",{className:"absolute top-10 right-10
+    w-40 h-40 bg-gradient-to-br from-yellow-200/30 to-amber-300/30 rounded-full
+    blur-3xl"}),React.createElement("div",{className:"absolute bottom-10 left-10
+    w-32 h-32 bg-gradient-to-br from-amber-200/30 to-orange-300/30 rounded-full
+    blur-2xl"}),React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8 relative"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl lg:text-5xl font-bold
+    text-amber-900 mb-6"},"Human-First Growth
+    Approach"),React.createElement("p",{className:"text-xl text-amber-800
+    max-w-3xl mx-auto mb-12 leading-relaxed"},"Monthly engagements with
+    transparent pricing and clear deliverables. Professional growth consulting
+    with measurable results and dedicated
+    support.")),React.createElement("div",{className:"grid md:grid-cols-3 gap-8
+    mb-16"},React.createElement(o,{className:"p-8 hover:shadow-xl transition-all
+    duration-300 border-2 border-yellow-200/50 bg-gradient-to-br from-white/90
+    to-yellow-50/90 backdrop-blur-sm transform
+    hover:scale-105"},React.createElement(p,{className:"pb-4"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-400 to-amber-400 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6
+    shadow-lg"},React.createElement(e.DollarSign,{className:"h-8 w-8
+    text-white"})),React.createElement(u,{className:"text-xl mb-2
+    text-amber-900"},"Transparent
+    Pricing")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    text-amber-800"},"Clear pricing structure with defined deliverables. Monthly
+    growth consultancy and creative production services with predictable
+    investment."))),React.createElement(o,{className:"p-8 hover:shadow-xl
+    transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br
+    from-white/90 to-amber-50/90 backdrop-blur-sm transform
+    hover:scale-105"},React.createElement(p,{className:"pb-4"},React.createElement("div",{className:"bg-gradient-to-r
+    from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6 shadow-lg"},React.createElement(e.Target,{className:"h-8
+    w-8 text-white"})),React.createElement(u,{className:"text-xl mb-2
+    text-amber-900"},"Results-Driven")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    text-amber-800"},"Only continue if you see real impact. We focus on cash
+    flow improvement and measurable growth metrics that matter to your
+    business."))),React.createElement(o,{className:"p-8 hover:shadow-xl
+    transition-all duration-300 border-2 border-orange-200/50 bg-gradient-to-br
+    from-white/90 to-orange-50/90 backdrop-blur-sm transform
+    hover:scale-105"},React.createElement(p,{className:"pb-4"},React.createElement("div",{className:"bg-gradient-to-r
+    from-orange-400 to-red-400 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6 shadow-lg"},React.createElement(e.Users,{className:"h-8
+    w-8 text-white"})),React.createElement(u,{className:"text-xl mb-2
+    text-amber-900"},"Human
+    Partnership")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    text-amber-800"},"Direct access to industry experts with 10+ years
+    experience. Personal attention, not automated solutions or junior
+    consultants.")))),React.createElement("div",{className:"text-center"},React.createElement("div",{className:"inline-flex
+    items-center bg-gradient-to-r from-white/90 to-yellow-50/90 backdrop-blur-sm
+    rounded-2xl shadow-xl p-6 text-amber-800 border
+    border-yellow-200/50"},React.createElement(e.DollarSign,{className:"h-6 w-6
+    text-amber-600
+    mr-3"}),React.createElement("span",{className:"font-medium"},"6-Figure
+    Profitable Businesses
+    Only"),React.createElement(M,{orientation:"vertical",className:"mx-4 h-6
+    bg-amber-300"}),React.createElement(e.Globe,{className:"h-6 w-6
+    text-amber-600
+    mr-3"}),React.createElement("span",{className:"font-medium"},"30+ Countries
+    Served"))))),React.createElement("section",{id:"services",className:"py-20
+    bg-gradient-to-br from-white to-yellow-50 relative
+    overflow-hidden"},React.createElement("div",{className:"absolute top-0
+    right-0 w-96 h-96 bg-gradient-to-bl from-yellow-200/20 to-transparent
+    rounded-full blur-3xl"}),React.createElement("div",{className:"absolute
+    bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-amber-200/20 to-transparent
+    rounded-full blur-3xl"}),React.createElement("div",{className:"max-w-7xl
+    mx-auto px-4 sm:px-6 lg:px-8
+    relative"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl lg:text-5xl font-bold
+    text-amber-900 mb-6"},"Fractional
+    Services"),React.createElement("p",{className:"text-xl text-amber-800
+    max-w-3xl mx-auto mb-8 leading-relaxed"},"Specialized growth services for
+    gaming and app businesses. Team management, marketability testing, user
+    acquisition, ASO, and ad
+    monetization."),React.createElement("div",{className:"inline-flex
+    items-center bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-8
+    py-4 shadow-lg border
+    border-yellow-300/50"},React.createElement(e.Lightbulb,{className:"w-5 h-5
+    text-amber-700 mr-2"}),React.createElement("span",{className:"text-amber-800
+    font-semibold"},"Fractional Head of Growth \u2022 Creative Strategist \u2022
+    AI & UA Ops"))),React.createElement("div",{className:"grid lg:grid-cols-3
+    gap-8"},React.createElement(o,{className:"p-8 hover:shadow-2xl
+    transition-all duration-300 border-2 border-yellow-200/50 bg-gradient-to-br
+    from-white/95 to-yellow-50/95 backdrop-blur-sm transform hover:scale-105
+    hover:border-yellow-300"},React.createElement(p,{className:"pb-6"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-400 to-amber-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6
+    shadow-xl"},React.createElement(e.TrendingUp,{className:"h-8 w-8
+    text-white"})),React.createElement(u,{className:"text-2xl mb-3
+    text-amber-900"},"Growth
+    Strategy")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    mb-6 text-amber-800"},"Scale your UA spend by 50%+ with proven strategies
+    across Google, Meta, ad networks, and programmatic. Focus on cash flow and
+    sustainable
+    growth."),React.createElement("ul",{className:"space-y-3"},React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"User Acquisition
+    Optimization")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Team Management &
+    Strategy")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Marketability
+    Testing")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Performance
+    Analytics"))))),React.createElement(o,{className:"p-8 hover:shadow-2xl
+    transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br
+    from-white/95 to-amber-50/95 backdrop-blur-sm transform hover:scale-105
+    hover:border-amber-300"},React.createElement(p,{className:"pb-6"},React.createElement("div",{className:"bg-gradient-to-r
+    from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6 shadow-xl"},React.createElement(e.Brain,{className:"h-8
+    w-8 text-white"})),React.createElement(u,{className:"text-2xl mb-3
+    text-amber-900"},"Creative & AI
+    Ops")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    mb-6 text-amber-800"},"Creative strategy combined with AI-powered
+    optimization. Maximize your creative performance with data-driven insights
+    and
+    automation."),React.createElement("ul",{className:"space-y-3"},React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Creative Strategy &
+    Testing")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"AI-Powered
+    Optimization")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Automated UA
+    Operations")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Performance Creative
+    Assets"))))),React.createElement(o,{className:"p-8 hover:shadow-2xl
+    transition-all duration-300 border-2 border-orange-200/50 bg-gradient-to-br
+    from-white/95 to-orange-50/95 backdrop-blur-sm transform hover:scale-105
+    hover:border-orange-300"},React.createElement(p,{className:"pb-6"},React.createElement("div",{className:"bg-gradient-to-r
+    from-orange-400 to-red-400 w-16 h-16 rounded-2xl flex items-center
+    justify-center mb-6
+    shadow-xl"},React.createElement(e.Gamepad2,{className:"h-8 w-8
+    text-white"})),React.createElement(u,{className:"text-2xl mb-3
+    text-amber-900"},"Gaming & Apps
+    Focus")),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    mb-6 text-amber-800"},"Specialized expertise in gaming and app monetization.
+    ASO, ad monetization, and industry-specific growth strategies that
+    work."),React.createElement("ul",{className:"space-y-3"},React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-orange-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"App Store Optimization
+    (ASO)")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-orange-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Ad Monetization
+    Strategy")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-orange-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Gaming-Specific
+    UA")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-5 w-5
+    text-orange-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",null,"Retention &
+    Engagement")))))),React.createElement("div",{className:"mt-16
+    text-center"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-100 to-amber-100 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl
+    border border-yellow-200/50
+    backdrop-blur-sm"},React.createElement("div",{className:"flex items-center
+    justify-center mb-4"},React.createElement(e.Award,{className:"h-8 w-8
+    text-amber-600 mr-3"}),React.createElement("h3",{className:"text-2xl
+    lg:text-3xl font-bold text-amber-900"},"10+ Years
+    Experience")),React.createElement("p",{className:"text-lg text-amber-800
+    mb-6 leading-relaxed"},"Proven track record in apps and games with a
+    growth-focused approach. Managed to scale UA spend and help companies
+    improve cash flow across all major
+    platforms."),React.createElement(v,{size:"lg",className:"bg-gradient-to-r
+    from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600
+    text-white shadow-xl transform hover:scale-105 transition-all
+    duration-200",onClick:()=>s("contact")},React.createElement(e.Rocket,{className:"mr-2
+    h-5 w-5"}),"Start Your Growth
+    Journey"))))),React.createElement("section",{id:"pricing",className:"py-20
+    bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50
+    relative"},React.createElement("div",{className:"absolute top-10 left-10
+    w-40 h-40 bg-yellow-300/20 rounded-full
+    blur-3xl"}),React.createElement("div",{className:"absolute bottom-10
+    right-10 w-32 h-32 bg-amber-300/20 rounded-full
+    blur-2xl"}),React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8 relative"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl lg:text-5xl font-bold
+    text-amber-900 mb-6"},"Transparent
+    Pricing"),React.createElement("p",{className:"text-xl text-amber-800
+    max-w-3xl mx-auto mb-12 leading-relaxed"},"Clear, upfront pricing for
+    professional growth consulting services. Choose the package that fits your
+    business needs.")),React.createElement("div",{className:"grid lg:grid-cols-2
+    gap-8 max-w-5xl mx-auto"},React.createElement(o,{className:"p-8
+    hover:shadow-2xl transition-all duration-300 border-2 border-yellow-300/50
+    bg-gradient-to-br from-white/95 to-yellow-50/95 backdrop-blur-sm transform
+    hover:scale-105 relative"},React.createElement("div",{className:"absolute
+    -top-4 left-1/2 transform
+    -translate-x-1/2"},React.createElement(W,{className:"bg-gradient-to-r
+    from-yellow-500 to-amber-500 text-white px-4 py-2 text-sm
+    font-semibold"},"Most Popular")),React.createElement(p,{className:"pb-6
+    text-center"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-400 to-amber-500 w-20 h-20 rounded-3xl flex items-center
+    justify-center mx-auto mb-6
+    shadow-xl"},React.createElement(e.TrendingUp,{className:"h-10 w-10
+    text-white"})),React.createElement(u,{className:"text-3xl mb-3
+    text-amber-900"},"Monthly Growth
+    Consulting"),React.createElement("div",{className:"text-center
+    mb-6"},React.createElement("div",{className:"text-5xl font-bold
+    text-amber-900
+    mb-2"},"\u20AC3,500"),React.createElement("div",{className:"text-amber-700
+    text-lg"},"per
+    month"))),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    mb-8 text-amber-800 text-center"},"Comprehensive growth consulting with
+    hands-on marketing support and strategic
+    guidance."),React.createElement("ul",{className:"space-y-4"},React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Complete
+    audit & review of current
+    operations")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Hands-on
+    marketing strategy & execution")),React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Channel
+    management & optimization")),React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Weekly
+    strategy meetings & progress
+    reviews")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-yellow-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Dedicated
+    Slack channel for direct
+    communication"))),React.createElement("div",{className:"mt-8
+    text-center"},React.createElement(v,{size:"lg",className:"w-full
+    bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600
+    hover:to-amber-600 text-white shadow-xl transform hover:scale-105
+    transition-all duration-200",onClick:()=>s("contact")},"Get
+    Started",React.createElement(e.ArrowRight,{className:"ml-2 h-5
+    w-5"}))))),React.createElement(o,{className:"p-8 hover:shadow-2xl
+    transition-all duration-300 border-2 border-amber-200/50 bg-gradient-to-br
+    from-white/95 to-amber-50/95 backdrop-blur-sm transform
+    hover:scale-105"},React.createElement(p,{className:"pb-6
+    text-center"},React.createElement("div",{className:"bg-gradient-to-r
+    from-amber-500 to-orange-500 w-20 h-20 rounded-3xl flex items-center
+    justify-center mx-auto mb-6
+    shadow-xl"},React.createElement(e.Sparkles,{className:"h-10 w-10
+    text-white"})),React.createElement(u,{className:"text-3xl mb-3
+    text-amber-900"},"Creative
+    Production"),React.createElement("div",{className:"text-center
+    mb-6"},React.createElement("div",{className:"text-5xl font-bold
+    text-amber-900
+    mb-2"},"\u20AC1,000"),React.createElement("div",{className:"text-amber-700
+    text-lg"},"one-time or
+    monthly"))),React.createElement(l,{className:"pt-0"},React.createElement(g,{className:"text-base
+    mb-8 text-amber-800 text-center"},"Professional creative assets designed to
+    boost your user acquisition and app store
+    performance."),React.createElement("ul",{className:"space-y-4"},React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"6
+    AI-generated creatives including UGC
+    content")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"UI
+    design & prototypes in Figma")),React.createElement("li",{className:"flex
+    items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"ASO
+    screenshot production &
+    optimization")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Performance-optimized
+    creative assets")),React.createElement("li",{className:"flex items-start
+    text-amber-800"},React.createElement(e.CheckCircle,{className:"h-6 w-6
+    text-amber-600 mr-3 mt-0.5
+    flex-shrink-0"}),React.createElement("span",{className:"font-medium"},"Ready-to-use
+    formats for all major
+    platforms"))),React.createElement("div",{className:"mt-8
+    text-center"},React.createElement(v,{size:"lg",variant:"outline",className:"w-full
+    border-2 border-amber-300 text-amber-700 hover:bg-amber-100 shadow-lg
+    transform hover:scale-105 transition-all
+    duration-200",onClick:()=>s("contact")},"Order
+    Creatives",React.createElement(e.ArrowRight,{className:"ml-2 h-5
+    w-5"})))))),React.createElement("div",{className:"mt-16
+    text-center"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-100 to-amber-100 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl
+    border border-yellow-200/50
+    backdrop-blur-sm"},React.createElement("div",{className:"flex items-center
+    justify-center mb-4"},React.createElement(e.Award,{className:"h-8 w-8
+    text-amber-600 mr-3"}),React.createElement("h3",{className:"text-2xl
+    lg:text-3xl font-bold text-amber-900"},"Professional Growth
+    Partnership")),React.createElement("p",{className:"text-lg text-amber-800
+    mb-6 leading-relaxed"},"Both packages can be combined for maximum impact.
+    Monthly consulting clients receive 20% discount on creative production
+    services."),React.createElement("div",{className:"grid md:grid-cols-2 gap-4
+    text-sm text-amber-700"},React.createElement("div",{className:"flex
+    items-center justify-center"},React.createElement(e.Calendar,{className:"h-5
+    w-5 mr-2"}),React.createElement("span",null,"Monthly billing
+    available")),React.createElement("div",{className:"flex items-center
+    justify-center"},React.createElement(e.Shield,{className:"h-5 w-5
+    mr-2"}),React.createElement("span",null,"Cancel anytime with 30-day
+    notice"))))))),React.createElement("section",{id:"clients",className:"py-20
+    bg-gradient-to-br from-amber-50 to-orange-50
+    relative"},React.createElement("div",{className:"absolute top-20 left-20
+    w-32 h-32 bg-yellow-300/20 rounded-full
+    blur-2xl"}),React.createElement("div",{className:"absolute bottom-20
+    right-20 w-40 h-40 bg-amber-300/20 rounded-full
+    blur-3xl"}),React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8 relative"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl lg:text-5xl font-bold
+    text-amber-900 mb-6"},"Trusted by Industry
+    Leaders"),React.createElement("p",{className:"text-xl text-amber-800
+    max-w-3xl mx-auto leading-relaxed"},"Working with leading gaming and app
+    companies across 30+ countries, helping them scale and achieve sustainable
+    growth.")),React.createElement("div",{className:"mb-16"},React.createElement("div",{className:"grid
+    grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8
+    items-center"},React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"PicsArt")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"AppsFlyer")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"Xsolla")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"SoloLearn")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"Lingvano")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"Chai.ai")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"Immutable")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"AppTweak")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"Pixion")),React.createElement("div",{className:"bg-gradient-to-br
+    from-white/90 to-yellow-50/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg
+    border border-yellow-200/50 hover:shadow-xl hover:scale-105 transition-all
+    duration-300"},React.createElement("div",{className:"text-center font-bold
+    text-lg
+    text-amber-800"},"AppCharge")))),React.createElement("div",{className:"grid
+    md:grid-cols-3 gap-8"},React.createElement(o,{className:"p-8 text-center
+    bg-gradient-to-br from-yellow-100 to-amber-100 border-2 border-yellow-200/50
+    shadow-xl transform hover:scale-105 transition-all
+    duration-300"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-500 to-amber-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mx-auto mb-4
+    shadow-lg"},React.createElement(e.TrendingUp,{className:"h-8 w-8
+    text-white"})),React.createElement("div",{className:"text-3xl font-bold
+    text-amber-800
+    mb-2"},"50%+"),React.createElement("div",{className:"text-amber-700
+    font-semibold mb-3"},"UA Spend
+    Growth"),React.createElement("p",{className:"text-amber-800 text-sm
+    leading-relaxed"},"Average user acquisition spend increase across Google,
+    Meta, ad networks, and programmatic
+    platforms"))),React.createElement(o,{className:"p-8 text-center
+    bg-gradient-to-br from-amber-100 to-orange-100 border-2 border-amber-200/50
+    shadow-xl transform hover:scale-105 transition-all
+    duration-300"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"bg-gradient-to-r
+    from-amber-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mx-auto mb-4
+    shadow-lg"},React.createElement(e.DollarSign,{className:"h-8 w-8
+    text-white"})),React.createElement("div",{className:"text-3xl font-bold
+    text-amber-800
+    mb-2"},"6-Figure"),React.createElement("div",{className:"text-amber-700
+    font-semibold mb-3"},"Profitable
+    Clients"),React.createElement("p",{className:"text-amber-800 text-sm
+    leading-relaxed"},"Working exclusively with established, profitable gaming
+    and app businesses ready to scale"))),React.createElement(o,{className:"p-8
+    text-center bg-gradient-to-br from-orange-100 to-red-100 border-2
+    border-orange-200/50 shadow-xl transform hover:scale-105 transition-all
+    duration-300"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"bg-gradient-to-r
+    from-orange-500 to-red-500 w-16 h-16 rounded-2xl flex items-center
+    justify-center mx-auto mb-4
+    shadow-lg"},React.createElement(e.BarChart3,{className:"h-8 w-8
+    text-white"})),React.createElement("div",{className:"text-3xl font-bold
+    text-amber-800 mb-2"},"Cash
+    Flow"),React.createElement("div",{className:"text-amber-700 font-semibold
+    mb-3"},"Improvement"),React.createElement("p",{className:"text-amber-800
+    text-sm leading-relaxed"},"Focus on sustainable growth strategies that
+    directly improve your bottom line and cash
+    position")))))),React.createElement("section",{id:"community",className:"py-20
+    bg-gradient-to-br from-purple-900 to-blue-900
+    text-white"},React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl font-bold
+    mb-6"},"Rzain Society"),React.createElement("p",{className:"text-xl
+    text-purple-100 max-w-3xl mx-auto mb-8"},"A game-changer community of 900+
+    leaders in gaming across 30+ countries. Join our exclusive network and
+    events."),React.createElement("div",{className:"inline-flex items-center
+    bg-white/10 backdrop-blur-sm rounded-full px-6
+    py-3"},React.createElement("span",{className:"text-white
+    font-semibold"},'"Not your Princess, just my own
+    hero"'))),React.createElement("div",{className:"grid md:grid-cols-3 gap-8
+    mb-12"},React.createElement(o,{className:"bg-white/10 backdrop-blur-sm
+    border-white/20 p-8 hover:bg-white/20
+    transition-colors"},React.createElement(l,{className:"pt-0
+    text-center"},React.createElement(e.Users,{className:"h-12 w-12
+    text-purple-300 mx-auto
+    mb-4"}),React.createElement("div",{className:"text-3xl font-bold text-white
+    mb-2"},"900+"),React.createElement("div",{className:"text-purple-200
+    font-semibold mb-3"},"Community
+    Members"),React.createElement("p",{className:"text-purple-100
+    text-sm"},"Gaming industry leaders, founders, and growth experts from around
+    the world"))),React.createElement(o,{className:"bg-white/10 backdrop-blur-sm
+    border-white/20 p-8 hover:bg-white/20
+    transition-colors"},React.createElement(l,{className:"pt-0
+    text-center"},React.createElement(e.Globe,{className:"h-12 w-12
+    text-blue-300 mx-auto mb-4"}),React.createElement("div",{className:"text-3xl
+    font-bold text-white
+    mb-2"},"30+"),React.createElement("div",{className:"text-blue-200
+    font-semibold
+    mb-3"},"Countries"),React.createElement("p",{className:"text-blue-100
+    text-sm"},"Global network spanning across Europe, Asia, Americas, and
+    beyond"))),React.createElement(o,{className:"bg-white/10 backdrop-blur-sm
+    border-white/20 p-8 hover:bg-white/20
+    transition-colors"},React.createElement(l,{className:"pt-0
+    text-center"},React.createElement(e.Calendar,{className:"h-12 w-12
+    text-green-300 mx-auto
+    mb-4"}),React.createElement("div",{className:"text-3xl font-bold text-white
+    mb-2"},"250"),React.createElement("div",{className:"text-green-200
+    font-semibold mb-3"},"Event
+    Attendees"),React.createElement("p",{className:"text-green-100
+    text-sm"},"From London to Istanbul, Barcelona - connecting the gaming
+    community")))),React.createElement("div",{className:"text-center"},React.createElement("h3",{className:"text-2xl
+    font-bold text-white mb-6"},"Join Our Knowledge
+    Base"),React.createElement("div",{className:"flex flex-col sm:flex-row gap-4
+    justify-center
+    items-center"},React.createElement(v,{size:"lg",className:"bg-green-600
+    hover:bg-green-700
+    text-white",onClick:()=>window.open("https://whatsapp.com/channel/0029VaQkRjR1t90UFk4QRy03","_blank")},React.createElement(e.MessageCircle,{className:"mr-2
+    h-5 w-5"}),"Join WhatsApp
+    Channel"),React.createElement("div",{className:"text-purple-200"},"Access
+    exclusive insights, strategies, and community
+    discussions"))))),React.createElement("section",{id:"contact",className:"py-20
+    bg-gradient-to-br from-amber-50
+    to-orange-50"},React.createElement("div",{className:"max-w-7xl mx-auto px-4
+    sm:px-6 lg:px-8"},React.createElement("div",{className:"text-center
+    mb-16"},React.createElement("h2",{className:"text-4xl font-bold
+    text-amber-900 mb-6"},"Get Started
+    Today"),React.createElement("p",{className:"text-xl text-amber-800 max-w-3xl
+    mx-auto mb-8"},"Ready to scale your gaming or app business? Let's discuss
+    your needs and create a customized growth strategy that delivers measurable
+    results."),React.createElement("div",{className:"inline-flex items-center
+    bg-gradient-to-r from-yellow-200 to-amber-200 rounded-full px-6 py-3 mb-8
+    border
+    border-yellow-300/50"},React.createElement(e.DollarSign,{className:"w-5 h-5
+    text-amber-700 mr-2"}),React.createElement("span",{className:"text-amber-800
+    font-semibold"},"Transparent Pricing \u2022 Professional Service \u2022
+    Proven Results"))),React.createElement("div",{className:"grid lg:grid-cols-2
+    gap-12"},React.createElement("div",null,React.createElement(o,{className:"p-8
+    shadow-xl bg-gradient-to-br from-white/95 to-yellow-50/95 backdrop-blur-sm
+    border border-yellow-200/50"},React.createElement(p,{className:"px-0
+    pt-0"},React.createElement(u,{className:"text-2xl mb-2
+    text-amber-900"},"Start Your Growth
+    Journey"),React.createElement(g,{className:"text-base mb-6
+    text-amber-800"},"Tell us about your gaming or app business, and we'll
+    create a customized proposal for your growth
+    needs.")),React.createElement(l,{className:"px-0
+    pb-0"},React.createElement("form",{onSubmit:k,className:"space-y-6"},React.createElement("div",{className:"grid
+    gap-2"},React.createElement("label",{className:"text-sm font-medium
+    text-amber-800"},"Full
+    Name"),React.createElement(C,{name:"name",value:r.name,onChange:m,placeholder:"Your
+    full name",required:!0})),React.createElement("div",{className:"grid
+    gap-2"},React.createElement("label",{className:"text-sm font-medium
+    text-amber-800"},"Business
+    Email"),React.createElement(C,{name:"email",type:"email",value:r.email,onChange:m,placeholder:"your.email@company.com",required:!0})),React.createElement("div",{className:"grid
+    gap-2"},React.createElement("label",{className:"text-sm font-medium
+    text-amber-800"},"Company/Game
+    Name"),React.createElement(C,{name:"company",value:r.company,onChange:m,placeholder:"Your
+    company or game
+    name",required:!0})),React.createElement("div",{className:"grid
+    gap-2"},React.createElement("label",{className:"text-sm font-medium
+    text-amber-800"},"Service
+    Interest"),React.createElement("select",{name:"service",value:r.service,onChange:m,className:"flex
+    h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm
+    ring-offset-background file:border-0 file:bg-transparent file:text-sm
+    file:font-medium placeholder:text-muted-foreground
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+    focus-visible:ring-offset-2 disabled:cursor-not-allowed
+    disabled:opacity-50",required:!0},React.createElement("option",{value:""},"Select
+    your
+    interest"),React.createElement("option",{value:"monthly-consulting"},"Monthly
+    Growth Consulting
+    (\u20AC3,500/month)"),React.createElement("option",{value:"creative-production"},"Creative
+    Production
+    (\u20AC1,000)"),React.createElement("option",{value:"both-services"},"Both
+    Services
+    (Combined)"),React.createElement("option",{value:"custom-needs"},"Custom
+    Requirements"))),React.createElement("div",{className:"grid
+    gap-2"},React.createElement("label",{className:"text-sm font-medium
+    text-amber-800"},"Project
+    Details"),React.createElement(H,{name:"message",value:r.message,onChange:m,placeholder:"Tell
+    us about your current UA spend, growth challenges, and your specific needs
+    for our
+    services...",className:"min-h-[120px]",required:!0})),React.createElement(v,{type:"submit",size:"lg",className:"w-full
+    bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600
+    hover:to-amber-600 text-white"},"Request
+    Consultation",React.createElement(e.ArrowRight,{className:"ml-2 h-4
+    w-4"})))))),React.createElement("div",{className:"space-y-8"},React.createElement(o,{className:"p-6
+    bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200/50
+    shadow-lg"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"flex
+    items-start"},React.createElement("div",{className:"bg-gradient-to-r
+    from-yellow-400 to-amber-400 w-12 h-12 rounded-lg flex items-center
+    justify-center mr-4
+    flex-shrink-0"},React.createElement(e.DollarSign,{className:"h-6 w-6
+    text-white"})),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    text-lg mb-2 text-amber-900"},"Monthly
+    Consulting"),React.createElement("p",{className:"text-amber-800
+    mb-3"},"\u20AC3,500/month comprehensive
+    service"),React.createElement("ul",{className:"text-sm text-amber-700
+    space-y-1"},React.createElement("li",null,"\u2022 Complete audit & strategy
+    review"),React.createElement("li",null,"\u2022 Hands-on marketing
+    execution"),React.createElement("li",null,"\u2022 Weekly meetings & Slack
+    support"),React.createElement("li",null,"\u2022 Channel management &
+    optimization")))))),React.createElement(o,{className:"p-6 bg-gradient-to-br
+    from-amber-50 to-orange-50 border-2 border-amber-200/50
+    shadow-lg"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"flex
+    items-start"},React.createElement("div",{className:"bg-gradient-to-r
+    from-amber-500 to-orange-500 w-12 h-12 rounded-lg flex items-center
+    justify-center mr-4
+    flex-shrink-0"},React.createElement(e.Sparkles,{className:"h-6 w-6
+    text-white"})),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    text-lg mb-2 text-amber-900"},"Creative
+    Production"),React.createElement("p",{className:"text-amber-800
+    mb-3"},"\u20AC1,000 professional creative
+    package"),React.createElement("ul",{className:"text-sm text-amber-700
+    space-y-1"},React.createElement("li",null,"\u2022 6 AI creatives including
+    UGC"),React.createElement("li",null,"\u2022 UI Figma
+    production"),React.createElement("li",null,"\u2022 ASO screenshot
+    optimization"),React.createElement("li",null,"\u2022 Ready-to-use
+    formats")))))),React.createElement(o,{className:"p-6 bg-gradient-to-br
+    from-orange-50 to-red-50 border-2 border-orange-200/50
+    shadow-lg"},React.createElement(l,{className:"pt-0"},React.createElement("div",{className:"flex
+    items-start"},React.createElement("div",{className:"bg-gradient-to-r
+    from-orange-400 to-red-400 w-12 h-12 rounded-lg flex items-center
+    justify-center mr-4
+    flex-shrink-0"},React.createElement(e.Award,{className:"h-6 w-6
+    text-white"})),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    text-lg mb-2 text-amber-900"},"6-Figure Business
+    Focus"),React.createElement("p",{className:"text-amber-800 mb-3"},"For
+    established profitable
+    companies"),React.createElement("ul",{className:"text-sm text-amber-700
+    space-y-1"},React.createElement("li",null,"\u2022 Current UA spend of
+    $10K+/month"),React.createElement("li",null,"\u2022 Proven product-market
+    fit"),React.createElement("li",null,"\u2022 Ready to scale
+    operations"),React.createElement("li",null,"\u2022 Cash flow positive
+    business")))))))))),React.createElement("footer",{className:"bg-gray-900
+    text-white py-12"},React.createElement("div",{className:"max-w-7xl mx-auto
+    px-4 sm:px-6 lg:px-8"},React.createElement("div",{className:"grid
+    md:grid-cols-4
+    gap-8"},React.createElement("div",null,React.createElement("div",{className:"flex
+    items-center mb-4"},React.createElement("div",{className:"text-2xl font-bold
+    bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text
+    text-transparent"},"Rzain"),React.createElement("div",{className:"ml-2
+    text-lg text-gray-300"},"Growth &
+    AI")),React.createElement("p",{className:"text-gray-400 mb-4"},"Fractional
+    Head of Growth for gaming and app businesses. Transparent pricing,
+    professional service, proven
+    results."),React.createElement("div",{className:"flex items-center text-sm
+    text-gray-400 mb-2"},React.createElement(e.Gamepad2,{className:"w-4 h-4
+    mr-2"}),"10+ Years Gaming &
+    Apps"),React.createElement("div",{className:"flex items-center text-sm
+    text-gray-400"},React.createElement(e.Globe,{className:"w-4 h-4
+    mr-2"}),"900+ Community
+    Members")),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    mb-4"},"Services"),React.createElement("ul",{className:"space-y-2
+    text-gray-400"},React.createElement("li",null,React.createElement("button",{onClick:()=>s("services"),className:"hover:text-white
+    transition-colors text-left"},"Growth
+    Strategy")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("services"),className:"hover:text-white
+    transition-colors text-left"},"Creative & AI
+    Ops")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("services"),className:"hover:text-white
+    transition-colors text-left"},"ASO &
+    Monetization")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("pricing"),className:"hover:text-white
+    transition-colors
+    text-left"},"Pricing")))),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    mb-4"},"Pricing"),React.createElement("ul",{className:"space-y-2
+    text-gray-400"},React.createElement("li",null,React.createElement("button",{onClick:()=>s("pricing"),className:"hover:text-white
+    transition-colors text-left"},"Monthly Consulting -
+    \u20AC3,500")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("pricing"),className:"hover:text-white
+    transition-colors text-left"},"Creative Production -
+    \u20AC1,000")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("clients"),className:"hover:text-white
+    transition-colors text-left"},"Success
+    Stories")),React.createElement("li",null,React.createElement("button",{onClick:()=>s("community"),className:"hover:text-white
+    transition-colors text-left"},"Rzain
+    Society")))),React.createElement("div",null,React.createElement("h3",{className:"font-semibold
+    mb-4"},"Connect"),React.createElement("ul",{className:"space-y-2
+    text-gray-400"},React.createElement("li",null,"Fractional Head of
+    Growth"),React.createElement("li",null,"Creative
+    Strategist"),React.createElement("li",null,"AI & UA Operations
+    Expert"),React.createElement("li",{className:"pt-2"},React.createElement(v,{size:"sm",className:"bg-gradient-to-r
+    from-yellow-500 to-amber-500 hover:from-yellow-600
+    hover:to-amber-600",onClick:()=>s("contact")},"Get
+    Quote"))))),React.createElement(M,{className:"my-8
+    bg-gray-800"}),React.createElement("div",{className:"flex flex-col
+    md:flex-row justify-between
+    items-center"},React.createElement("p",{className:"text-gray-400"},"\xA9
+    2024 Rzain Growth & AI. Professional growth
+    consulting."),React.createElement("div",{className:"flex space-x-6 mt-4
+    md:mt-0 items-center"},React.createElement("span",{className:"text-gray-500
+    text-sm"},'"Not your Princess, just my own
+    hero"'),React.createElement("button",{onClick:()=>s("pricing"),className:"text-yellow-400
+    hover:text-yellow-300 transition-colors text-sm"},"View Pricing"))))))}var
+    L,e,me,K=f(()=>{"use
+    client";i();L=c("react");U();_();j();F();Y();$();e=c("lucide-react");me=ie});i();function
+    ne(){let t=c("react"),a=(K(),re(J)).default;window.React=t;let
+    r=c("react-dom/client").createRoot,d=r(b.container.querySelector(".root"));class
+    m extends t.Component{state={hasError:!1};static
+    getDerivedStateFromError(s){return{hasError:!0}}componentDidCatch(s,w){b.handleError(s,s?.name==="ModuleLoadingError")}render(){return
+    this.state.hasError?t.createElement("div",{class:"module-error"},"Something
+    went
+    wrong."):this.props.children}}d.render(t.createElement(m,null,t.createElement(a,null)))}Zone.current.fork({name:"angular-bootstrap",onHandleError(t,a,r,d){return
+    b.handleError(d,d?.name==="ModuleLoadingError"),b.onModulesLoaded(),!1}}).runGuarded(()=>{loadModulesSequentially(window["UIB_MODULES_TO_LOAD_UIB_PROD_BUILD_COMPONENT_ID_MOCK.id"]).then(()=>{delete
+    window["UIB_MODULES_TO_LOAD_UIB_PROD_BUILD_COMPONENT_ID_MOCK.id"],b.onModulesLoaded(),ne()})});})();
+
+
+    //# sourceURL=UIB_script_UIB_PROD_BUILD_COMPONENT_ID_MOCK.id.js</script>
+actions: {}
+slots:
+  - id: moduleContainerSlot
+    name: content
+    children: []
