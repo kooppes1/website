@@ -23,7 +23,7 @@ jobs:
           node-version: '20'
       - run: npm ci || npm install
       - run: npm run build
-      # Fix pour les SPA : sert index.html si route non trouvée
+      # SPA fallback pour les routes côté client
       - run: cp build/index.html build/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
